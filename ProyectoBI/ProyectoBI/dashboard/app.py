@@ -3,6 +3,7 @@ import sqlite3
 import pandas as pd
 import altair as alt
 from datetime import datetime
+import os
 
 st.set_page_config(
     page_title="DataVision Store BI",
@@ -56,7 +57,16 @@ st.markdown("""
 
 st.caption(f"Ultima actualizacion: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
 
-conexion = sqlite3.connect("../datos/empresa.db")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+db_path = os.path.join(
+    BASE_DIR,
+    "..",
+    "datos",
+    "empresa.db"
+)
+
+conexion = sqlite3.connect(db_path)
 
 ventas = pd.read_sql("SELECT COUNT(*) total FROM ventas", conexion)
 ingresos = pd.read_sql("SELECT SUM(total) total FROM ventas", conexion)
