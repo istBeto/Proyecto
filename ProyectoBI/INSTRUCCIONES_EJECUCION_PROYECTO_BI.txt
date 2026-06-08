@@ -1,0 +1,136 @@
+# COMANDOS PARA EJECUTAR EL PROYECTO BI
+
+## 1. Abrir PowerShell en la carpeta ProyectoBI
+
+Verificar Python:
+
+python --version
+
+---
+
+## 2. Activar entorno virtual
+
+.venv\Scripts\activate
+
+Debe aparecer:
+
+(.venv)
+
+---
+
+## 3. Ejecutar Dashboard
+
+cd dashboard
+
+python -m streamlit run app.py
+
+o
+
+streamlit run app.py
+
+---
+
+## 4. Abrir Dashboard
+
+Si no abre automáticamente:
+
+http://localhost:8501
+
+---
+
+## 5. Detener Dashboard
+
+CTRL + C
+
+---
+
+# COMANDOS DE VERIFICACIÓN
+
+Verificar SQLite:
+
+python
+
+import sqlite3
+print(sqlite3.sqlite_version)
+
+exit()
+
+---
+
+Verificar archivos de base de datos:
+
+dir ..\datos
+
+Debe mostrar:
+
+empresa.db
+warehouse.db
+
+---
+
+# SI QUIERO VOLVER A GENERAR TODO
+
+## Generar datos
+
+cd scripts
+
+python generar_datos.py
+
+---
+
+## Crear base transaccional
+
+python crear_bd.py
+
+---
+
+## Crear Data Warehouse
+
+python crear_warehouse.py
+
+---
+
+## Ejecutar ETL
+
+python etl.py
+
+---
+
+## Generar análisis
+
+python analisis.py
+
+---
+
+## Ejecutar minería de datos
+
+python mineria.py
+
+---
+
+# SI STREAMLIT FALLA
+
+Reinstalar Altair:
+
+pip uninstall altair -y
+
+pip install --no-cache-dir altair==5.5.0
+
+---
+
+Verificar versión:
+
+python -c "import altair; print(altair.**version**)"
+
+Debe mostrar:
+
+5.5.0
+
+---
+
+Volver a ejecutar:
+
+cd dashboard
+
+python -m streamlit run app.py
+
